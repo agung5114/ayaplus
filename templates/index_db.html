@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% extends 'base.html' %} {% block content %}
+  <div class="pagetitle">
+    <h1>Dashboard</h1>
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{{ url_for('dashboard2') }}">Home</a></li>
+        <li class="breadcrumb-item active">Dashboard</li>
+      </ol>
+    </nav>
+  </div>
+  <!-- End Page Title -->
+
+  <section class="section dashboard">
+    <div class="row">
+
+      <div class="col-lg-12 text-center">
+        <h4 class="card-title">Prediksi Risiko Penyakitmu</h4>
+        <h5 class="">Diabetes</h5>
+        <div class="mb-4">
+          <a class="btn btn-warning rounded-pill" href="{{ url_for('predict') }}" role="button">Cek Ulang Risiko Penyakit</a>
+          <!-- <button type="button" class="btn btn-warning rounded-pill">
+            Cek Ulang !
+          </button> -->
+        </div>
+      </div>
+
+      <!-- Left side columns -->
+      <div class="col-lg-12">
+        <div class="row">
+          <!-- Status Pemeriksaan -->
+          <!-- <div class="col-xxl-4 col-md-6">
+            <div class="card info-card">
+              <div class="card-body">
+                <div class="pagetitle">
+
+                  <h1>Periksa Kesehatan-mu sekarang</h1>
+                </div>
+              </div>
+            </div>
+          </div> -->
+          <!-- End Status Pemeriksaan -->
+
+          <!-- Rekomendasi Olahraga Card -->
+          <div class="col-xxl-4 col-md-6">
+            <div class="card info-card sales-card">
+              <div class="card-body">
+                <h5 class="card-title">Rekomendasi <span>Olahraga</span></h5>
+
+                <div class="d-flex align-items-center">
+                  <div
+                    class="card-icon rounded-circle d-flex align-items-center justify-content-center"
+                  >
+                    <i class="ri-run-fill"></i>
+                  </div>
+                  <div class="ps-3">
+                    <h6>Jalan Cepat</h6>
+                    <span class="text-muted small pt-1">
+                      Membantu untuk merangsang aliran darah di tubuh sehingga
+                      sirkulasi darah jadi lebih lancar.</span
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- End ekomendasi Olahraga Card -->
+
+          <!-- Rekomenandasi Makanan Card -->
+          <div class="col-xxl-4 col-md-6">
+            <div class="card info-card revenue-card">
+              <div class="card-body">
+                <h5 class="card-title">Rekomendasi <span>Makanan</span></h5>
+
+                <div class="d-flex align-items-center">
+                  <div
+                    class="card-icon rounded-circle d-flex align-items-center justify-content-center"
+                  >
+                    <i class="bi bi-basket"></i>
+                  </div>
+                  <div class="ps-3">
+                    <h6>Bubur Gandum</h6>
+                    <!-- <span class="text-success small pt-1 fw-bold">Rendah kolesterol</span> -->
+                    <!-- <span class="text-muted small pt-2 ps-1">Aman dikonsumsi oleh penderita jantung</span> -->
+                    <span class="text-muted small pt-1"
+                      >Sumber karbohidrat yang bisa menurunkan risiko mengidap
+                      penyakit berbagai penyakit</span
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- End Rekomenandasi Makanan Card -->
+
+          <!-- Rekomedansi Artikel Kesehatan Card -->
+          <div class="col-xxl-4 col-md-6">
+            <div class="card info-card customers-card">
+              <div class="card-body">
+                <h5 class="card-title">
+                  Rekomendasi <span>Artikel Kesehatan</span>
+                </h5>
+
+                <div class="d-flex align-items-center">
+                  <div
+                    class="card-icon rounded-circle d-flex align-items-center justify-content-center"
+                  >
+                    <i class="bi bi-book"></i>
+                  </div>
+                  <div class="ps-3">
+                    <h6>News</h6>
+                    <span class="text-muted small pt-1"
+                      >KEMENPPPA: WASPADAI PENYAKIT MATA TERKAIT DIABETES DAN PERTAMBAHAN USIA SEDINI MUNGKIN</span
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- End Rekomedansi Artikel Kesehatan  Card -->
+
+          <!-- Logbook Aktifitas  -->
+          <div class="col-xxl-4 col-md-6">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Logbook <span> Aktifitas</span></h5>
+
+                <div class="activity">
+                  <div class="activity-item d-flex">
+                    <div class="activite-label">2 hari lalu</div>
+                    <i
+                      class="bi bi-circle-fill activity-badge text-success align-self-start"
+                    ></i>
+                    <div class="activity-content">Jalan Pagi</div>
+                  </div>
+                  <!-- End activity item-->
+
+                  <div class="activity-item d-flex">
+                    <div class="activite-label">4 hari lalu</div>
+                    <i
+                      class="bi bi-circle-fill activity-badge text-danger align-self-start"
+                    ></i>
+                    <div class="activity-content">Lari</div>
+                  </div>
+                  <!-- End activity item-->
+
+                  <div class="activity-item d-flex">
+                    <div class="activite-label">4 hari lalu</div>
+                    <i
+                      class="bi bi-circle-fill activity-badge text-primary align-self-start"
+                    ></i>
+                    <div class="activity-content">
+                      Makan sate dan sop kambing
+                    </div>
+                  </div>
+                  <!-- End activity item-->
+
+                  <div class="activity-item d-flex">
+                    <div class="activite-label">7 hari lalu</div>
+                    <i
+                      class="bi bi-circle-fill activity-badge text-info align-self-start"
+                    ></i>
+                    <div class="activity-content">Bersepedah</div>
+                  </div>
+                  <!-- End activity item-->
+
+                  <div class="activity-item d-flex">
+                    <div class="activite-label">8 hari lalu</div>
+                    <i
+                      class="bi bi-circle-fill activity-badge text-warning align-self-start"
+                    ></i>
+                    <div class="activity-content">Jalan Pagi</div>
+                  </div>
+                  <!-- End activity item-->
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- end of Logbook Aktifitas  -->
+
+          <!-- Traffic Kegiatan -->
+          <div class="col-xxl-4 col-md-6">
+            <div class="card">
+              <div class="filter">
+                <a class="icon" href="#" data-bs-toggle="dropdown"
+                  ><i class="bi bi-three-dots"></i
+                ></a>
+                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                  <li class="dropdown-header text-start">
+                    <h6>Filter</h6>
+                  </li>
+
+                  <li><a class="dropdown-item" href="#">Hari ini </a></li>
+                  <li><a class="dropdown-item" href="#">Bulan ini</a></li>
+                  <li><a class="dropdown-item" href="#">Tahun ini</a></li>
+                </ul>
+              </div>
+
+              <div class="card-body pb-0">
+                <h5 class="card-title">
+                  Traffic Kegiatan <span>| Bulan ini</span>
+                </h5>
+
+                <div
+                  id="trafficChart"
+                  style="min-height: 400px"
+                  class="echart"
+                ></div>
+
+                <script>
+                  document.addEventListener("DOMContentLoaded", () => {
+                    echarts
+                      .init(document.querySelector("#trafficChart"))
+                      .setOption({
+                        tooltip: {
+                          trigger: "item",
+                        },
+                        legend: {
+                          top: "5%",
+                          left: "center",
+                        },
+                        series: [
+                          {
+                            name: "",
+                            type: "pie",
+                            radius: ["40%", "70%"],
+                            avoidLabelOverlap: false,
+                            label: {
+                              show: false,
+                              position: "center",
+                            },
+                            emphasis: {
+                              label: {
+                                show: true,
+                                fontSize: "18",
+                                fontWeight: "bold",
+                              },
+                            },
+                            labelLine: {
+                              show: false,
+                            },
+                            data: [
+                              {
+                                value: 848,
+                                name: "Istirahat",
+                              },
+                              {
+                                value: 1235,
+                                name: "Bekerja",
+                              },
+                              {
+                                value: 680,
+                                name: "Olahraga",
+                              },
+                              {
+                                value: 284,
+                                name: "Berlibur",
+                              },
+                              // {
+                              //   value: 300,
+                              //   name: "",
+                              // },
+                            ],
+                          },
+                        ],
+                      });
+                  });
+                </script>
+              </div>
+            </div>
+          </div>
+          <!-- End of Traffic Kegiatan -->
+          <div class="col-xxl-4 col-md-6">
+            <div class="card info-card customers-card">
+              <div class="card-body">
+                <h5 class="card-title">
+                  Rekomendasi <span>Forum Kesehatan</span>
+                </h5>
+
+                <div class="d-flex align-items-center">
+                  <a class="w-100"
+                    href="https://forum.mofdac.com/humhub/index.php?r=dashboard%2Fdashboard"
+                  >
+                  <img class="w-100"
+                    src="{{ url_for('static', filename='assets/img/forum.png') }}"
+                    alt="rocket_contact"
+                  />
+                </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- End Left side columns -->
+      </div>
+    </div>
+  </section>
+
+  <!-- End #main -->
+
+  {% endblock %}
+</html>

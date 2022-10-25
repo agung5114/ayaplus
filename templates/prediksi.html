@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% extends 'base.html' %} {% block content %}
+  <div class="pagetitle">
+    <h1>Prediksi Risiko Penyakit</h1>
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="{{ url_for('dashboard') }}">Home</a>
+        </li>
+        <li class="breadcrumb-item active">Prediksi Risiko Penyakit</li>
+      </ol>
+    </nav>
+  </div>
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+    crossorigin="anonymous"
+  />
+  <section class="section dashboard">
+    <form action="{{ url_for('predict')}}" method="post">
+      <h5>Silakan isi sesuai kondisi anda</h5>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title text-center">Data Pribadi</h5>
+
+                <!-- General Form Elements -->
+                <div class="form-group">
+                  <select
+                    class="form-select form-select-lg mb-3"
+                    name="GENDER"
+                    aria-label=".form-select-lg example"
+                  >
+                    <option selected>Gender</option>
+                    <option value="1">Laki-laki</option>
+                    <option value="0">Perempuan</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <select
+                    class="form-select form-select-lg mb-3"
+                    name="AGE_GROUP"
+                    aria-label=".form-select-lg example"
+                  >
+                    <option selected>Umur</option>
+                    <option value="1">Dibawah 25</option>
+                    <option value="2">25-29</option>
+                    <option value="3">30-34</option>
+                    <option value="4">35-39</option>
+                    <option value="5">40-44</option>
+                    <option value="6">45-49</option>
+                    <option value="7">50-54</option>
+                    <option value="8">55-49</option>
+                    <option value="9">60-64</option>
+                    <option value="10">65-69</option>
+                    <option value="11">70-74</option>
+                    <option value="12">75-79</option>
+                    <option value="13">80 Keatas</option>
+                  </select>
+                </div>
+                <!--BMI-->
+                <div class="form-group">
+                  <input
+                    type="number"
+                    name="WEIGHT"
+                    class="form-control form-control-lg mb-3"
+                    placeholder="Berat Badan"
+                    required="required"
+                  />
+                </div>
+                <div class="form-group">
+                  <input
+                    type="number"
+                    name="HEIGHT"
+                    class="form-control form-control-lg mb-3"
+                    placeholder="Tinggi Badan"
+                    required="required"
+                  />
+                </div>
+                <!-- End General Form Elements -->
+              </div>
+            </div>
+          </div>
+          <div class="col-md-8">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title text-center">
+                  Data Kesehatan Pola Hidup Sehat
+                </h5>
+                <!-- Advanced Form Elements -->
+                <form>
+                  <div class="d-flex flex-row">
+                    <div class="row mx-1">
+                      <div class="form-group">
+                        <select
+                          class="form-select form-select-lg mb-3"
+                          name="HIGHCHOL"
+                          aria-label=".form-select-lg example"
+                        >
+                          <option selected>Kolesterol</option>
+                          <option value="1">Tinggi</option>
+                          <option value="0">Normal</option>
+                        </select>
+                      </div>
+                      <div class="form-group">
+                        <select
+                          class="form-select form-select-lg mb-3"
+                          name="HIGHBP"
+                          aria-label=".form-select-lg example"
+                        >
+                          <option selected>Tekanan Darah</option>
+                          <option value="1">Darah Tinggi</option>
+                          <option value="0">Normal</option>
+                        </select>
+                      </div>
+                      <div class="form-group">
+                        <select
+                          class="form-select form-select-lg mb-3"
+                          name="SMOKING"
+                          aria-label=".form-select-lg example"
+                        >
+                          <option selected>Perokok Aktif</option>
+                          <option value="1">Ya</option>
+                          <option value="0">Tidak</option>
+                        </select>
+                      </div>
+                      <div class="form-group">
+                        <select
+                          class="form-select form-select-lg mb-3"
+                          name="FRUITS"
+                          aria-label=".form-select-lg example"
+                        >
+                          <option selected>Konsumsi Buah</option>
+                          <option value="1">Sering</option>
+                          <option value="0">Jarang</option>
+                        </select>
+                      </div>
+                      <div class="form-group">
+                        <select
+                          class="form-select form-select-lg mb-3"
+                          name="VEGGIES"
+                          aria-label=".form-select-lg example"
+                        >
+                          <option selected>Konsumsi Sayur</option>
+                          <option value="1">Sering</option>
+                          <option value="0">Jarang</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="row mx-1">
+                      <div class="form-group">
+                        <select
+                          class="form-select form-select-lg mb-3"
+                          name="PHYSACTIVITY"
+                          aria-label=".form-select-lg example"
+                        >
+                          <option selected>Aktifitas Olahraga</option>
+                          <option value="1">Sering</option>
+                          <option value="0">Jarang</option>
+                        </select>
+                      </div>
+                      <div class="form-group">
+                        <select
+                          class="form-select form-select-lg mb-3"
+                          name="ALCOHOL"
+                          aria-label=".form-select-lg example"
+                        >
+                          <option selected>Konsumsi Alkohol</option>
+                          <option value="1">Sering</option>
+                          <option value="0">Jarang</option>
+                        </select>
+                      </div>
+                      <div class="form-group">
+                        <select
+                          class="form-select form-select-lg mb-3"
+                          name="COUGHING"
+                          aria-label=".form-select-lg example"
+                        >
+                          <option selected>Sering Batuk</option>
+                          <option value="1">Ya</option>
+                          <option value="0">Tidak</option>
+                        </select>
+                      </div>
+                      <div class="form-group">
+                        <select
+                          class="form-select form-select-lg mb-3"
+                          name="YELLOW_FINGERS"
+                          aria-label=".form-select-lg example"
+                        >
+                          <option selected>Jari Kuning</option>
+                          <option value="1">Ya</option>
+                          <option value="0">Tidak</option>
+                        </select>
+                      </div>
+                      <div class="form-group">
+                        <select
+                          class="form-select form-select-lg mb-3"
+                          name="SHORT_BREATH"
+                          aria-label=".form-select-lg example"
+                        >
+                          <option selected>Nafas Pendek</option>
+                          <option value="1">Ya</option>
+                          <option value="0">Tidak</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+                <!-- End General Form Elements -->
+              </div>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-warning btn-lg">
+            Jalankan Prediksi
+          </button>
+        </div>
+      </div>
+    </form>
+  </section>
+  <section class="row justify-content-center mt-2">
+    <div class="col-lg-12">
+      <div class="card text-center">
+        <div class="card-header">
+          <h4 class="text-center">Hasil Prediksi</h4>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <h5 class="text-left">
+              <strong>BMI: {{hasil.name}} ({{hasil.kelas}})</strong>
+            </h5>
+          </div>
+          <div class="row mt-lg-3">
+            <div class="col-md-3">
+              <h5 class="text-left display-8">
+                Risiko Jantung: <strong>{{prediction.heart}}</strong>
+              </h5>
+              <a
+                class="btn btn-success mb-2"
+                href="{{ url_for('dashboard') }}"
+                role="button"
+                >Rekomendasi Penyakit Jantung</a
+              >
+            </div>
+            <div class="col-md-3">
+              <h5 class="text-left display-8">
+                Risiko Diabetes: <strong>{{prediction.diabetes}}</strong>
+              </h5>
+              <a
+                class="btn btn-success mb-2"
+                href="{{ url_for('dashboard2') }}"
+                role="button"
+                >Rekomendasi Penyakit Diabetes</a
+              >
+            </div>
+            <div class="col-md-3">
+              <h5 class="text-left display-8">
+                Risiko Kanker Paru: <strong>{{prediction.lung}}</strong>
+              </h5>
+              <a
+                class="btn btn-success mb-2"
+                href="{{ url_for('dashboard3') }}"
+                role="button"
+                >Rekomendasi Penyakit Kanker Paru</a
+              >
+            </div>
+            <div class="col-md-3">
+              <h5 class="text-left display-8">
+                Risiko Stroke: <strong>{{prediction.stroke}}</strong>
+              </h5>
+              <a
+                class="btn btn-success mb-2"
+                href="{{ url_for('dashboard4') }}"
+                role="button"
+                >Rekomendasi Penyakit <br> Stroke</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script> -->
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"
+  ></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</html>
+{% endblock %}

@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% extends 'base.html' %} {% block content %}
+  <div class="pagetitle">
+    <h1>Prediksi Risiko Penyakit</h1>
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="{{ url_for('dashboard') }}">Home</a>
+        </li>
+        <li class="breadcrumb-item active">Prediksi Risiko Penyakit</li>
+      </ol>
+    </nav>
+  </div>
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+    crossorigin="anonymous"
+  />
+  <!-- <link
+    rel="stylesheet"
+    href="{{ url_for('static', filename='style.css') }}"
+  /> -->
+  <!-- <div class="container contact-form"> -->
+  <section class="section dashboard">
+    <div class="row m-4">
+      <div class="col-md-8">
+        <form action="{{ url_for('predict')}}" method="post">
+          <h3>Silakan isi sesuai kondisi anda</h3>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <select
+                  class="form-select form-select-lg mb-3"
+                  name="GENDER"
+                  aria-label=".form-select-lg example"
+                >
+                  <option selected>Gender</option>
+                  <option value="1">Laki-laki</option>
+                  <option value="0">Perempuan</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <select
+                  class="form-select form-select-lg mb-3"
+                  name="AGE_GROUP"
+                  aria-label=".form-select-lg example"
+                >
+                  <option selected>Umur</option>
+                  <option value="1">Dibawah 25</option>
+                  <option value="2">25-29</option>
+                  <option value="3">30-34</option>
+                  <option value="4">35-39</option>
+                  <option value="5">40-44</option>
+                  <option value="6">45-49</option>
+                  <option value="7">50-54</option>
+                  <option value="8">55-49</option>
+                  <option value="9">60-64</option>
+                  <option value="10">65-69</option>
+                  <option value="11">70-74</option>
+                  <option value="12">75-79</option>
+                  <option value="13">80 Keatas</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <select
+                  class="form-select form-select-lg mb-3"
+                  name="HIGHCHOL"
+                  aria-label=".form-select-lg example"
+                >
+                  <option selected>Kolesterol</option>
+                  <option value="1">Tinggi</option>
+                  <option value="0">Normal</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <select
+                  class="form-select form-select-lg mb-3"
+                  name="HIGHBP"
+                  aria-label=".form-select-lg example"
+                >
+                  <option selected>Tekanan Darah</option>
+                  <option value="1">Darah Tinggi</option>
+                  <option value="0">Normal</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <select
+                  class="form-select form-select-lg mb-3"
+                  name="SMOKING"
+                  aria-label=".form-select-lg example"
+                >
+                  <option selected>Perokok Aktif</option>
+                  <option value="1">Ya</option>
+                  <option value="0">Tidak</option>
+                </select>
+              </div>
+              <!--BMI-->
+              <div class="form-group">
+                <input
+                  type="number"
+                  name="WEIGHT"
+                  class="form-control form-control-lg mb-3"
+                  placeholder="Berat Badan"
+                  required="required"
+                />
+              </div>
+              <div class="form-group">
+                <input
+                  type="number"
+                  name="HEIGHT"
+                  class="form-control form-control-lg mb-3"
+                  placeholder="Tinggi Badan"
+                  required="required"
+                />
+              </div>
+              <br />
+              <button type="submit" class="btn btn-warning btn-lg">
+                Jalankan Prediksi
+              </button>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <select
+                  class="form-select form-select-lg mb-3"
+                  name="FRUITS"
+                  aria-label=".form-select-lg example"
+                >
+                  <option selected>Konsumsi Buah</option>
+                  <option value="1">Sering</option>
+                  <option value="0">Jarang</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <select
+                  class="form-select form-select-lg mb-3"
+                  name="VEGGIES"
+                  aria-label=".form-select-lg example"
+                >
+                  <option selected>Konsumsi Sayur</option>
+                  <option value="1">Sering</option>
+                  <option value="0">Jarang</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <select
+                  class="form-select form-select-lg mb-3"
+                  name="PHYSACTIVITY"
+                  aria-label=".form-select-lg example"
+                >
+                  <option selected>Aktifitas Olahraga</option>
+                  <option value="1">Sering</option>
+                  <option value="0">Jarang</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <select
+                  class="form-select form-select-lg mb-3"
+                  name="ALCOHOL"
+                  aria-label=".form-select-lg example"
+                >
+                  <option selected>Konsumsi Alkohol</option>
+                  <option value="1">Sering</option>
+                  <option value="0">Jarang</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <select
+                  class="form-select form-select-lg mb-3"
+                  name="COUGHING"
+                  aria-label=".form-select-lg example"
+                >
+                  <option selected>Sering Batuk</option>
+                  <option value="1">Ya</option>
+                  <option value="0">Tidak</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <select
+                  class="form-select form-select-lg mb-3"
+                  name="YELLOW_FINGERS"
+                  aria-label=".form-select-lg example"
+                >
+                  <option selected>Jari Kuning</option>
+                  <option value="1">Ya</option>
+                  <option value="0">Tidak</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <select
+                  class="form-select form-select-lg mb-3"
+                  name="SHORT_BREATH"
+                  aria-label=".form-select-lg example"
+                >
+                  <option selected>Nafas Pendek</option>
+                  <option value="1">Ya</option>
+                  <option value="0">Tidak</option>
+                </select>
+              </div>
+            </div>
+            <!-- <div class="d-grid gap-2">
+            <button type="submit" class="btn btn-primary btn-lg">
+              Jalankan Prediksi
+            </button>
+          </div> -->
+          </div>
+        </form>
+      </div>
+      <div class="col-md-4">
+        <br />
+        <br />
+        <div class="card text-start">
+          <div class="card-header">
+            <h4 class="text-center">Hasil Prediksi</h4>
+          </div>
+          <div class="card-body">
+            <h5 class="text-left">
+              <strong>BMI: {{hasil.name}} ({{hasil.kelas}})</strong>
+            </h5>
+            <h5 class="text-left display-8">
+              Risiko Jantung: <strong>{{prediction.heart}}</strong>
+            </h5>
+            <a
+              class="btn btn-success mb-2"
+              href="{{ url_for('dashboard') }}"
+              role="button"
+              >Rekomendasi Penyakit Jantung</a
+            >
+            <br />
+            <h5 class="text-left display-8">
+              Risiko Diabetes: <strong>{{prediction.diabetes}}</strong>
+            </h5>
+            <a
+              class="btn btn-success mb-2"
+              href="{{ url_for('dashboard2') }}"
+              role="button"
+              >Rekomendasi Penyakit Diabetes</a
+            >
+            <br />
+            <h5 class="text-left display-8">
+              Risiko Kanker Paru: <strong>{{prediction.lung}}</strong>
+            </h5>
+            <a
+              class="btn btn-success mb-2"
+              href="{{ url_for('dashboard3') }}"
+              role="button"
+              >Rekomendasi Penyakit Kanker Paru</a
+            >
+            <br />
+            <h5 class="text-left display-8">
+              Risiko Stroke: <strong>{{prediction.stroke}}</strong>
+            </h5>
+            <a
+              class="btn btn-success mb-2"
+              href="{{ url_for('dashboard4') }}"
+              role="button"
+              >Rekomendasi Penyakit Stroke</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="row m-2">
+      <div class="col-md-12">
+        <img
+          src="{{ url_for('static', filename='assets/img/news-1.jpg') }}"
+          alt="rocket_contact"
+        />
+      </div>
+    </div> -->
+  </section>
+  <section class="section">
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">General Form Elements</h5>
+
+            <!-- General Form Elements -->
+            <div class="form-group">
+              <select
+                class="form-select form-select-lg mb-3"
+                name="GENDER"
+                aria-label=".form-select-lg example"
+              >
+                <option selected>Gender</option>
+                <option value="1">Laki-laki</option>
+                <option value="0">Perempuan</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <select
+                class="form-select form-select-lg mb-3"
+                name="AGE_GROUP"
+                aria-label=".form-select-lg example"
+              >
+                <option selected>Umur</option>
+                <option value="1">Dibawah 25</option>
+                <option value="2">25-29</option>
+                <option value="3">30-34</option>
+                <option value="4">35-39</option>
+                <option value="5">40-44</option>
+                <option value="6">45-49</option>
+                <option value="7">50-54</option>
+                <option value="8">55-49</option>
+                <option value="9">60-64</option>
+                <option value="10">65-69</option>
+                <option value="11">70-74</option>
+                <option value="12">75-79</option>
+                <option value="13">80 Keatas</option>
+              </select>
+            </div>
+            <!--BMI-->
+            <div class="form-group">
+              <input
+                type="number"
+                name="WEIGHT"
+                class="form-control form-control-lg mb-3"
+                placeholder="Berat Badan"
+                required="required"
+              />
+            </div>
+            <div class="form-group">
+              <input
+                type="number"
+                name="HEIGHT"
+                class="form-control form-control-lg mb-3"
+                placeholder="Tinggi Badan"
+                required="required"
+              />
+            </div>
+            <!-- End General Form Elements -->
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-6">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Advanced Form Elements</h5>
+
+            <!-- Advanced Form Elements -->
+            <form>
+              <div class="row mb-5">
+                <label class="col-sm-2 col-form-label">Switches</label>
+                <div class="col-sm-10">
+                  <div class="form-check form-switch">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      id="flexSwitchCheckDefault"
+                    />
+                    <label class="form-check-label" for="flexSwitchCheckDefault"
+                      >Default switch checkbox input</label
+                    >
+                  </div>
+                  <div class="form-check form-switch">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      id="flexSwitchCheckChecked"
+                      checked=""
+                    />
+                    <label class="form-check-label" for="flexSwitchCheckChecked"
+                      >Checked switch checkbox input</label
+                    >
+                  </div>
+                  <div class="form-check form-switch">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      id="flexSwitchCheckDisabled"
+                      disabled=""
+                    />
+                    <label
+                      class="form-check-label"
+                      for="flexSwitchCheckDisabled"
+                      >Disabled switch checkbox input</label
+                    >
+                  </div>
+                  <div class="form-check form-switch">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      id="flexSwitchCheckCheckedDisabled"
+                      checked=""
+                      disabled=""
+                    />
+                    <label
+                      class="form-check-label"
+                      for="flexSwitchCheckCheckedDisabled"
+                      >Disabled checked switch checkbox input</label
+                    >
+                  </div>
+                </div>
+              </div>
+
+              <div class="row mb-5">
+                <label class="col-sm-2 col-form-label">Ranges</label>
+                <div class="col-sm-10">
+                  <div>
+                    <label for="customRange1" class="form-label"
+                      >Example range</label
+                    >
+                    <input type="range" class="form-range" id="customRange1" />
+                  </div>
+                  <div>
+                    <label for="disabledRange" class="form-label"
+                      >Disabled range</label
+                    >
+                    <input
+                      type="range"
+                      class="form-range"
+                      id="disabledRange"
+                      disabled=""
+                    />
+                  </div>
+                  <div>
+                    <label for="customRange2" class="form-label"
+                      >Min and max with steps</label
+                    >
+                    <input
+                      type="range"
+                      class="form-range"
+                      min="0"
+                      max="5"
+                      step="0.5"
+                      id="customRange2"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div class="row mb-3">
+                <label class="col-sm-2 col-form-label">Floating labels</label>
+                <div class="col-sm-10">
+                  <div class="form-floating mb-3">
+                    <input
+                      type="email"
+                      class="form-control"
+                      id="floatingInput"
+                      placeholder="name@example.com"
+                    />
+                    <label for="floatingInput">Email address</label>
+                  </div>
+                  <div class="form-floating mb-3">
+                    <input
+                      type="password"
+                      class="form-control"
+                      id="floatingPassword"
+                      placeholder="Password"
+                    />
+                    <label for="floatingPassword">Password</label>
+                  </div>
+                  <div class="form-floating mb-3">
+                    <textarea
+                      class="form-control"
+                      placeholder="Leave a comment here"
+                      id="floatingTextarea"
+                      style="height: 100px"
+                    ></textarea>
+                    <label for="floatingTextarea">Comments</label>
+                  </div>
+                  <div class="form-floating mb-3">
+                    <select
+                      class="form-select"
+                      id="floatingSelect"
+                      aria-label="Floating label select example"
+                    >
+                      <option selected="">Open this select menu</option>
+                      <option value="1">One</option>
+                      <option value="2">Two</option>
+                      <option value="3">Three</option>
+                    </select>
+                    <label for="floatingSelect">Works with selects</label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row mb-5">
+                <label class="col-sm-2 col-form-label">Input groups</label>
+                <div class="col-sm-10">
+                  <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">@</span>
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Username"
+                      aria-label="Username"
+                      aria-describedby="basic-addon1"
+                    />
+                  </div>
+
+                  <div class="input-group mb-3">
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Recipient's username"
+                      aria-label="Recipient's username"
+                      aria-describedby="basic-addon2"
+                    />
+                    <span class="input-group-text" id="basic-addon2"
+                      >@example.com</span
+                    >
+                  </div>
+
+                  <label for="basic-url" class="form-label"
+                    >Your vanity URL</label
+                  >
+                  <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon3"
+                      >https://example.com/users/</span
+                    >
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="basic-url"
+                      aria-describedby="basic-addon3"
+                    />
+                  </div>
+
+                  <div class="input-group mb-3">
+                    <span class="input-group-text">$</span>
+                    <input
+                      type="text"
+                      class="form-control"
+                      aria-label="Amount (to the nearest dollar)"
+                    />
+                    <span class="input-group-text">.00</span>
+                  </div>
+
+                  <div class="input-group mb-3">
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Username"
+                      aria-label="Username"
+                    />
+                    <span class="input-group-text">@</span>
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Server"
+                      aria-label="Server"
+                    />
+                  </div>
+
+                  <div class="input-group">
+                    <span class="input-group-text">With textarea</span>
+                    <textarea
+                      class="form-control"
+                      aria-label="With textarea"
+                    ></textarea>
+                  </div>
+                </div>
+              </div>
+            </form>
+            <!-- End General Form Elements -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script> -->
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"
+  ></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</html>
+{% endblock %}

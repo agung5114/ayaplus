@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% extends 'base.html' %} 
+  <!-- <main> -->
+  {% block content %}
+      <div class="pagetitle">
+        <h1>Challanges</h1>
+        <nav>
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+            <li class="breadcrumb-item"><a href="{{url_for('challanges')}}">Challanges</a></li>
+            <li class="breadcrumb-item active">Sepeda</li>
+          </ol>
+        </nav>
+      </div>
+      <!-- End Page Title -->
+
+      <section class="section dashboard">
+        <div class="row">
+          <div class="col-12">
+
+            <div class="card recent-sales overflow-auto">
+              <div class="card-body pt-3">
+                <!-- Bordered Tabs -->
+                <ul class="nav nav-tabs nav-tabs-bordered" role="tablist">
+  
+                  <li class="nav-item" role="presentation">
+                    <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#profile-overview" aria-selected="true" role="tab">Overview</button>
+                  </li>
+  
+                  <li class="nav-item" role="presentation">
+                    <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-leaderboard" aria-selected="false" role="tab" tabindex="-1">Leaderboard</button>
+                  </li>
+  
+                </ul>
+                <div class="tab-content pt-2">
+  
+                  <div class="tab-pane fade profile-overview active show" id="profile-overview" role="tabpanel">
+                    <h5 class="card-title">Tentang Challange Ini</h5>
+                    <p class="small fst-italic">Bersepeda merupakan salah satu olahraga jenis cardio yang baik untuk kesehatan jantung. Lakukan bersepeda baik di luar ruangan maupun bersepeda menggunakan mesin, lalu submit hasil bersepeda kalian disini.</p>
+  
+                    <h5 class="card-title">Detail Challange</h5>
+  
+                    <div class="row">
+                      <div class="col-lg-3 col-md-4 label">Tanggal Kegiatan</div>
+                      <div class="col-lg-9 col-md-8">01 Oktober - 31 Oktober 2022</div>
+                    </div>
+  
+                    <div class="row">
+                      <div class="col-lg-3 col-md-4 label">Jarak Tempuh</div>
+                      <div class="col-lg-9 col-md-8">5 Km, minimum 1 Km per kegiatan</div>
+                    </div>
+                    
+                    <div class="row">
+                      <div class="col-lg-3 col-md-4 label">Jumlah Peserta</div>
+                      <div class="col-lg-9 col-md-8">130 | 10 teman anda mengikuti challange ini</div>
+                    </div>
+  
+                  </div>
+
+                  <div class="tab-pane fade profile-edit pt-3" id="profile-leaderboard" role="tabpanel">
+                    <h5 class="card-title">Leaderboard</h5>
+  
+                    <div class="dataTable-wrapper dataTable-loading no-footer sortable searchable fixed-columns">
+                      <div class="dataTable-top">
+                        <div class="dataTable-dropdown">
+                          <label>
+                            <select class="dataTable-selector">
+                              <option value="5" selected="">5</option>
+                              <option value="10">10</option>
+                              <option value="15">15</option>
+                              <option value="20">20</option>
+                              <option value="25">25</option>
+                            </select> entries per page
+                          </label>
+                        </div>
+                        <div class="dataTable-search"><input class="dataTable-input" placeholder="Search..." type="text">
+                        </div>
+                      </div>
+
+                      <div class="dataTable-container">
+                        <table class="table table-borderless datatable dataTable-table">
+                      <thead>
+                        <tr>
+                          <th scope="col" data-sortable="" style="width: 10.9773%;"><a href="#" class="dataTable-sorter">Peringkat</a></th>
+                          <th scope="col" data-sortable="" style="width: 23.9023%;"><a href="#" class="dataTable-sorter">Nama</a></th>
+                          <th scope="col" data-sortable="" style="width: 40.1912%;"><a href="#" class="dataTable-sorter">Total Jarak</a></th>
+                          <!-- <th scope="col" data-sortable="" style="width: 10.9773%;"><a href="#" class="dataTable-sorter">Total Jarak</a></th> -->
+                          <th scope="col" data-sortable="" style="width: 9.91501%;"><a href="#" class="dataTable-sorter">Jumlah Submit</a></th>
+                          <th scope="col" data-sortable="" style="width: 15.0496%;"><a href="#" class="dataTable-sorter">Waktu Finish</a></th></tr>
+                      </thead>
+                      <tbody>
+                        <tr><th scope="row"><a href="#">1</a></th><td>Aghny Yogaswara Arifiansyah</td><td><a href="#" class="text-primary">30</a></td><td>5</td><td><span class="badge bg-success">02-10-2022 07:30 AM</span></td></tr>
+                        <tr><th scope="row"><a href="#">2</a></th><td>Fadia Sabrian Ganafi</td><td><a href="#" class="text-primary">6.5</a></td><td>5</td><td><span class="badge bg-success">02-10-2022 07:41 AM</span></td></tr>
+                        <tr><th scope="row"><a href="#">3</a></th><td>Siti Alisah</td><td><a href="#" class="text-primary">7.25</a></td><td>7</td><td><span class="badge bg-success">03-10-2022 06:30 AM</span></td></tr>
+                        <tr><th scope="row"><a href="#">4</a></th><td>Emanuel Santoso</td><td><a href="#" class="text-primar">2</a></td><td>3</td><td><span class="badge bg-success">03-10-2022 07:30 AM</span></td></tr>
+                        <tr><th scope="row"><a href="#">5</a></th><td>Abdul Harits</td><td><a href="#" class="text-primary">5</a></td><td>10</td><td><span class="badge bg-success">05-10-2022 05:30 PM</span></td></tr></tbody>
+                    </table></div>
+                    <div class="dataTable-bottom"><div class="dataTable-info">Showing 1 to 5 of 5 entries</div><nav class="dataTable-pagination"><ul class="dataTable-pagination-list"></ul></nav></div>
+                  </div>
+                </div>
+
+              </div><!-- End Bordered Tabs -->
+  
+            </div>
+          
+          </div>
+  
+        </div>
+      </section>
+      {% endblock %}
+      <!-- End Of </main> -->
+
+
+</html>

@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% extends 'base.html' %} 
+  {% block title %}Promo & Reward{% endblock %}
+  {% block content %}
+  <section class="section">
+    <div class="row d-none" id="notif_promo">
+      <a href="#" class="row ms-1 justify-content-end">
+        <div
+          class="col-sm-6 alert alert-success alert-dismissible fade show"
+          role="alert"
+        >
+          <i class="bi bi-check-circle"></i>
+          Dapatkan promo menarik untuk pembayaran tagihan secara bundle
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="alert"
+            aria-label="Close"
+          ></button>
+        </div>
+      </a>
+    </div>
+
+    <div class="row d-none" id="notif_reward">
+      <a href="#" class="row ms-1 justify-content-end">
+        <div
+          class="col-sm-6 alert alert-warning alert-dismissible fade show"
+          role="alert"
+        >
+          <i class="bi bi-star"></i>
+          Dapatkan reward jika bayarin tagihan orang lain
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="alert"
+            aria-label="Close"
+          ></button>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="row justify-content-center">
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="card-body">
+            <div class="pagetitle text-center mt-4 mb-3">
+              <h1>Simulasi Pembayaran</h1>
+            </div>
+
+            <!-- General Form Elements -->
+            <form>
+              <div class="row mb-3">
+                <label for="inputText" class="col-sm-3 col-form-label"
+                  >Nomor Kartu KIS
+                </label>
+                <div class="col-sm-9">
+                  <input
+                    type="text"
+                    class="form-control"
+                    disabled=""
+                    value="0002741016576"
+                  />
+                </div>
+              </div>
+              <div class="row mb-3">
+                <label class="col-sm-3 col-form-label">Nama Peserta</label>
+                <div class="col-sm-9">
+                  <input
+                    type="text"
+                    class="form-control"
+                    disabled=""
+                    value="Aghny Yogaswara Arifiansyah"
+                  />
+                </div>
+              </div>
+
+              <div class="row mb-3">
+                <label class="col-sm-3 col-form-label">Pembayaran untuk</label>
+                <div
+                  class="col-sm-9"
+                  onchange="show_hide_inputan_nama_peserta_terutang_dan_nomor_kartu_terutang('id_nomor_kartu_terutang', 'id_nama_peserta_terutang' , 'orang_lain')"
+                >
+                  <select
+                    class="form-select"
+                    aria-label="Default select example"
+                  >
+                    <option selected="" value="diri_sendiri">
+                      Diri Sendiri
+                    </option>
+                    <option value="orang_lain">Orang Lain</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="row mb-3 d-none" id="id_nomor_kartu_terutang">
+                <label
+                  for="inputText"
+                  class="col-sm-3 col-form-label offset-md-3"
+                  >Nomor Kartu terutang
+                </label>
+                <div class="col-sm-4">
+                  <input
+                    id="nomor_kartu_terutang"
+                    type="text"
+                    class="form-control"
+                    onchange="show_hide_nama_peserta_terutang()"
+                  />
+                </div>
+              </div>
+
+              <div class="row mb-3 d-none" id="id_nama_peserta_terutang">
+                <label class="col-sm-3 col-form-label offset-md-3"
+                  >Nama Peserta</label
+                >
+                <div class="col-sm-4">
+                  <input
+                    id="nama_peserta_terutang"
+                    type="text"
+                    class="form-control"
+                    disabled=""
+                  />
+                </div>
+              </div>
+
+              <fieldset class="row mb-3">
+                <legend class="col-form-label col-sm-3 pt-0">
+                  Jenis Kepesertaan
+                </legend>
+                <div
+                  class="col-sm-9"
+                  id="Title"
+                  onchange="showHideEle('tipe_kelas', 'PBPU')"
+                >
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="tipe_kepesertaan"
+                      id="PBI"
+                      value="PBI"
+                      checked=""
+                    />
+                    <label class="form-check-label" for="gridRadios1">
+                      PBI (Penerima Bantuan Iuran)
+                    </label>
+                  </div>
+
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="tipe_kepesertaan"
+                      id="PBPU"
+                      value="PBPU"
+                    />
+                    <label class="form-check-label" for="gridRadios3">
+                      PBPU (Pekerja Bukan Penerima Upah)
+                    </label>
+                  </div>
+                </div>
+              </fieldset>
+
+              <fieldset class="row mb-3 d-none" id="tipe_kelas">
+                <legend class="col-form-label col-sm-3 pt-0">Kelas</legend>
+                <div class="d-flex col-sm-9">
+                  <div class="form-check me-3">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="tipe_kelas"
+                      id="kelas_1"
+                      value="kelas_1"
+                    />
+                    <label class="form-check-label" for="kelas_1">
+                      Kelas 1
+                    </label>
+                  </div>
+                  <div class="form-check me-3">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="tipe_kelas"
+                      id="kelas_2"
+                      value="kelas_2"
+                    />
+                    <label class="form-check-label" for="kelas_2">
+                      Kelas 2
+                    </label>
+                  </div>
+                  <div class="form-check disabled">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="tipe_kelas"
+                      id="kelas_3"
+                      value="kelas_3"
+                      checked=""
+                    />
+                    <label class="form-check-label" for="kelas_3">
+                      Kelas 3
+                    </label>
+                  </div>
+                </div>
+              </fieldset>
+
+              <div class="row mb-3">
+                <label for="inputDate" class="col-sm-3 col-form-label"
+                  >Tanggal Bayar</label
+                >
+
+                <div class="col-sm-9">
+                  <script>
+                    document.write(new Date().toLocaleDateString());
+                  </script>
+                  <!-- <input type="date" class="form-control" value="" /> -->
+
+                  <div class="mt-1">
+                    <h6 style="color: grey; font-size: 12px">
+                      Pembayaran sebelum tanggal 10 akan mendapatkan reward
+                    </h6>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row mb-3">
+                <legend class="col-form-label col-sm-3">Tagihan Bulan</legend>
+                <div class="row col-sm-9 d-flex">
+                  <div class="row col-sm-12">
+                    <div class="col-sm-2">
+                      <div class="form-check me-2">
+                        <input
+                          class="form-check-input"
+                          type="checkbox"
+                          id="januari"
+                          name="checkbox"
+                        />
+                        <label class="form-check-label" for="januari">
+                          Januari
+                        </label>
+                      </div>
+                      <div class="form-check me-2">
+                        <input
+                          class="form-check-input"
+                          type="checkbox"
+                          id="juli"
+                          name="checkbox"
+                        />
+                        <label class="form-check-label" for="juli">
+                          Juli
+                        </label>
+                      </div>
+                    </div>
+
+                    <div class="col-sm-2">
+                      <div class="form-check me-2">
+                        <input
+                          class="form-check-input"
+                          type="checkbox"
+                          id="februari"
+                          name="checkbox"
+                        />
+                        <label class="form-check-label" for="februari">
+                          Februari
+                        </label>
+                      </div>
+                      <div class="form-check me-2">
+                        <input
+                          class="form-check-input"
+                          type="checkbox"
+                          id="agustus"
+                          name="checkbox"
+                        />
+                        <label class="form-check-label" for="agustus">
+                          Agustus
+                        </label>
+                      </div>
+                    </div>
+
+                    <div class="col-sm-2">
+                      <div class="form-check me-2">
+                        <input
+                          class="form-check-input"
+                          type="checkbox"
+                          id="maret"
+                          name="checkbox"
+                        />
+                        <label class="form-check-label" for="maret">
+                          Maret
+                        </label>
+                      </div>
+                      <div class="form-check me-2">
+                        <input
+                          class="form-check-input"
+                          type="checkbox"
+                          id="september"
+                          name="checkbox"
+                        />
+                        <label class="form-check-label" for="september">
+                          September
+                        </label>
+                      </div>
+                    </div>
+
+                    <div class="col-sm-2">
+                      <div class="form-check me-2">
+                        <input
+                          class="form-check-input"
+                          type="checkbox"
+                          id="april"
+                          name="checkbox"
+                        />
+                        <label class="form-check-label" for="april">
+                          April
+                        </label>
+                      </div>
+                      <div class="form-check me-2">
+                        <input
+                          class="form-check-input"
+                          type="checkbox"
+                          id="oktober"
+                          name="checkbox"
+                        />
+                        <label class="form-check-label" for="oktober">
+                          Oktober
+                        </label>
+                      </div>
+                    </div>
+
+                    <div class="col-sm-2">
+                      <div class="form-check me-2">
+                        <input
+                          class="form-check-input"
+                          type="checkbox"
+                          id="mei"
+                          name="checkbox"
+                        />
+                        <label class="form-check-label" for="mei"> Mei </label>
+                      </div>
+                      <div class="form-check me-2">
+                        <input
+                          class="form-check-input"
+                          type="checkbox"
+                          id="november"
+                          name="checkbox"
+                        />
+                        <label class="form-check-label" for="november">
+                          November
+                        </label>
+                      </div>
+                    </div>
+
+                    <div class="col-sm-2">
+                      <div class="form-check me-2">
+                        <input
+                          class="form-check-input"
+                          type="checkbox"
+                          id="juni"
+                          name="checkbox"
+                        />
+                        <label class="form-check-label" for="juni">
+                          Juni
+                        </label>
+                      </div>
+                      <div class="form-check me-2">
+                        <input
+                          class="form-check-input"
+                          type="checkbox"
+                          id="Desember"
+                          name="checkbox"
+                        />
+                        <label class="form-check-label" for="Desember">
+                          Desember
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row mb-3">
+                <label class="col-sm-3 col-form-label"
+                  >Jumlah Bayar (per bulan)</label
+                >
+                <div class="col-sm-9">
+                  <input
+                    id="jumlah_bayar_per_bulan"
+                    type="text"
+                    class="form-control"
+                    disabled=""
+                  />
+                </div>
+              </div>
+
+              <div class="row mb-3">
+                <label class="col-sm-3 col-form-label"
+                  >Jumlah Bayar <em>(bundle)</em></label
+                >
+                <div class="col-sm-9">
+                  <input
+                    id="jumlah_bayar_per_bundle"
+                    type="text"
+                    class="form-control"
+                    disabled=""
+                  />
+                </div>
+              </div>
+
+              <div class="row mb-3">
+                <label class="col-sm-3 col-form-label"
+                  >Jumlah Penghematan</label
+                >
+                <div class="col-sm-9">
+                  <input
+                    id="jumlah_penghematan"
+                    type="text"
+                    class="form-control"
+                    disabled=""
+                  />
+                </div>
+              </div>
+
+              <div class="row mb-3">
+                <div class="col-sm-12 text-center">
+                  <button
+                    type="button"
+                    class="btn btn-success mb-2"
+                    onclick="hitungJumlahBayar()"
+                  >
+                    Simulasikan Pembayaran
+                  </button>
+                  <button type="submit" class="btn btn-warning mb-2">
+                    Bayar Sekarang
+                  </button>
+                </div>
+              </div>
+            </form>
+            <!-- End General Form Elements -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  {% endblock %}
+
+  
+</html>
